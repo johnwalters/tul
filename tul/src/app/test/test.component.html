@@ -4,16 +4,29 @@
   </div>
 </div>
 <div class="row">
+  <div class="col">
+    <button class="btn btn-warning" (click)="exersizeCrud()">Exersize Crud</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table>
+      <tr *ngFor="let exersize of exersizes">
+        <td>{{exersize.name}}</td>
+    </table>
+  </div>
+</div>
+
+<div class="row">
     <div class="col">
-      <button class="btn btn-warning" (click)="exersizeCrud()">Exersize Crud</button>
+      <button class="btn btn-primary" (click)="clearLog()">Clear Log</button>
     </div>
   </div>
-  <div class="row">
-      <div class="col">
-        <table>
-            <tr *ngFor="let exersize of exersizes">
-                <td >{{exersize.name}}</td>
-        </table>
-      </div>
-    </div>
-
+<div class="row">
+  <div class="col">
+    <table>
+      <tr *ngFor="let logItem of log">
+        <td>{{logItem}}</td>
+    </table>
+  </div>
+</div>

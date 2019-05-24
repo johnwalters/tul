@@ -11,10 +11,13 @@ export class TestComponent implements OnInit {
 
   status = 'ready to test';
   exersizes = Array<Exersize>();
+  log = Array<string>();
 
   constructor(
     private exersizeService: ExersizeService,
-  ) { }
+  ) {
+    this.clearLog();
+  }
 
   ngOnInit() {
   }
@@ -30,6 +33,10 @@ export class TestComponent implements OnInit {
     exersize1.name = 'seated row';
     this.exersizeService.addExersize(exersize1);
     this.loadExersizes();
+
+    this.logMessage('getting  exersize "seated row"');
+    const exersize1Check = this.exersizeService.getExersize(exersize1.name);
+    this.assert(exersize1Check != null, 'getting  exersize "seated row"');
 
     this.logMessage('adding  exersize "chest press"');
     const exersize2 = new Exersize();
@@ -47,6 +54,10 @@ export class TestComponent implements OnInit {
     this.exersizeService.deleteExersize('chest press');
     this.loadExersizes();
 
+    this.logMessage('getting  exersize "chest press"');
+    const exersize2Check = this.exersizeService.getExersize(exersize2.name);
+    this.assert(exersize2Check == null, 'deleting  exersize "chest press"');
+
     this.logMessage('deleting  exersize "shoulder press"');
     this.exersizeService.deleteExersize('shoulder press');
     this.loadExersizes();
@@ -61,6 +72,11 @@ export class TestComponent implements OnInit {
 
   private logMessage(message: string): void {
     this.status = message;
+    this.log.push(message);
+  }
+
+    private clearLog(): void {
+      this.log = new Array<string>();
   }
 
   private loadExersizes(): void {
@@ -69,7 +85,7 @@ export class TestComponent implements OnInit {
 
   private assert(condition: boolean, testName: string): void {
     if (condition) {
-      this.logMessage(testName + ' worked');
+      this.logMessage(testName + ' succeeded');
     } else {
       this.logMessage(testName + ' failed');
     }
