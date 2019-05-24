@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b67818b8-424e-4c8a-be7d-efaf91920ce0/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/laptul",
+    "appService.deploySubpath": "dist/tul"
+}
