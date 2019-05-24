@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col">
+    {{status}}
+  </div>
+</div>
+<div class="row">
+    <div class="col">
+      <button class="btn btn-warning" (click)="exersizeCrud()">Exersize Crud</button>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col">
+        <table>
+            <tr *ngFor="let exersize of exersizes">
+                <td >{{exersize.name}}</td>
+        </table>
+      </div>
+    </div>
+
