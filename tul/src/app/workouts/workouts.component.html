@@ -13,10 +13,28 @@
 <div class="row">
     <div class="col">
       <table>
-        <tr *ngFor="let workout of workouts">
+        <tr *ngFor="let model of workoutModels">
           <td>
-            <span>{{workout.dateMMDDYY()}}</span>
+            <span>{{model.workout.dateMMDDYY()}}</span>
+            <span class="delete"
+            *ngIf="!model.isDeletePending"
+            ><button type="button" class="btn btn-outline-danger btn-sm" (click)="promptToDelete(model)">Delete</button></span>
+            <span class="confirm-delete"
+            *ngIf="model.isDeletePending">
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="promptToDelete(model)">Cancel</button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(model)">Delete?</button>
+            </span>
           </td>
+          <!-- <td class="pad">
+              <span>&nbsp;</span>
+            </td>
+          <td >
+            <span *ngIf="!model.isDeletePending"><button type="button" class="btn btn-outline-danger btn-sm" (click)="promptToDelete(model)">Delete</button></span>
+            <span *ngIf="model.isDeletePending">
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="promptToDelete(model)">Cancel</button>
+              <button type="button" class="btn btn-danger btn-sm" (click)="delete(model)">Delete?</button>
+            </span>
+          </td> -->
       </table>
     </div>
   </div>

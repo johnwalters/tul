@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Exersize } from '../exersize';
-import { Workout } from '../workout';
 import { ExersizeService } from '../exersize.service';
+import { WorkoutModel } from './WorkoutModel';
 
 @Component({
   selector: 'app-workouts',
@@ -11,7 +11,7 @@ import { ExersizeService } from '../exersize.service';
 export class WorkoutsComponent implements OnInit {
 
   exersizes = Array<Exersize>();
-  workouts = Array<Workout>();
+  workoutModels = Array<WorkoutModel>();
 
   constructor(
     private exersizeService: ExersizeService,
@@ -27,12 +27,29 @@ export class WorkoutsComponent implements OnInit {
     this.loadWorkouts();
   }
 
+  promptToDelete(model: WorkoutModel): void {
+    model.isDeletePending = !model.isDeletePending;
+  }
+
+  delete(model: WorkoutModel): void {
+    this.exersizeService.deleteWorkout(model.workout.date);
+    this.loadWorkouts();
+  }
+
   private loadExersizes(): void {
     this.exersizes =  this.exersizeService.getAllExersizes().Values();
   }
 
   private loadWorkouts(): void {
-    this.workouts =  this.exersizeService.getAllWorkouts().Values();
+    this.workoutModels = new Array<WorkoutModel>();
+    for (const workout of this.exersizeService.getAllWorkouts().Values()) {
+      this.workoutModels.push(new WorkoutModel(workout));
+    }
+
   }
 
+
+
 }
+
+
