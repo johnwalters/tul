@@ -35,6 +35,7 @@
             <table *ngIf="workout.exersizeSessions && workout.exersizeSessions.Values()">
               <tr *ngFor="let session of workout.exersizeSessions.Values()">
                 <td>{{session.exersize.name}}</td>
+                <td>{{session.toString()}}</td>
             </table>
           </span>
         </td>

@@ -3,6 +3,7 @@ import { ExersizeService } from '../exersize.service';
 import { Exersize } from '../exersize';
 import { Workout } from '../workout';
 import { WorkoutData } from '../WorkoutData';
+import { WeightUnitOfMeasure } from '../WeightUnitOfMeasure';
 
 @Component({
   selector: 'app-test',
@@ -110,6 +111,28 @@ export class TestComponent implements OnInit {
     let workout1 = new Workout();
     workout1.date = workout1Date;
     workout1 = this.exersizeService.populateWorkoutWithExersizeSessions(workout1);
+
+    const workout1SeatedRowSession = workout1.exersizeSessions.Item('seated row');
+    workout1SeatedRowSession.TimeUnderLoadSeconds = 90;
+    workout1SeatedRowSession.notes = 'less weight';
+    workout1SeatedRowSession.repititions = null;
+    workout1SeatedRowSession.weight = 135;
+    workout1SeatedRowSession.weightUnitOfMeasure = WeightUnitOfMeasure.units;
+
+    const workout1ChestPressSession = workout1.exersizeSessions.Item('chest press');
+    workout1ChestPressSession.TimeUnderLoadSeconds = 90;
+    workout1ChestPressSession.notes = '';
+    workout1ChestPressSession.repititions = null;
+    workout1ChestPressSession.weight = 14;
+    workout1ChestPressSession.weightUnitOfMeasure = WeightUnitOfMeasure.pounds;
+
+    const workout1ShoulderPressSession = workout1.exersizeSessions.Item('shoulder press');
+    workout1ShoulderPressSession.TimeUnderLoadSeconds = 60;
+    workout1ShoulderPressSession.notes = 'foo shoulder';
+    workout1ShoulderPressSession.repititions = null;
+    workout1ShoulderPressSession.weight = 6;
+    workout1ShoulderPressSession.weightUnitOfMeasure = WeightUnitOfMeasure.units;
+
     this.exersizeService.addWorkout(workout1);
     this.loadWorkouts();
 
@@ -119,14 +142,35 @@ export class TestComponent implements OnInit {
     let workout2 = new Workout();
     workout2.date = workout2Date;
     workout2 = this.exersizeService.populateWorkoutWithExersizeSessions(workout2);
+    const seatedRowSession = workout2.exersizeSessions.Item('seated row');
+    seatedRowSession.TimeUnderLoadSeconds = 121;
+    seatedRowSession.notes = 'do it more';
+    seatedRowSession.repititions = null;
+    seatedRowSession.weight = 115;
+    seatedRowSession.weightUnitOfMeasure = WeightUnitOfMeasure.units;
+
+    const workout2ChestPressSession = workout2.exersizeSessions.Item('chest press');
+    workout2ChestPressSession.TimeUnderLoadSeconds = 107;
+    workout2ChestPressSession.notes = '';
+    workout2ChestPressSession.repititions = null;
+    workout2ChestPressSession.weight = 15;
+    workout2ChestPressSession.weightUnitOfMeasure = WeightUnitOfMeasure.units;
+
+    const workout2ShoulderPressSession = workout2.exersizeSessions.Item('shoulder press');
+    workout2ShoulderPressSession.TimeUnderLoadSeconds = 190;
+    workout2ShoulderPressSession.notes = 'my shoulders hurt';
+    workout2ShoulderPressSession.repititions = null;
+    workout2ShoulderPressSession.weight = 4;
+    workout2ShoulderPressSession.weightUnitOfMeasure = WeightUnitOfMeasure.kilograms;
+
     this.exersizeService.addWorkout(workout2);
     this.loadWorkouts();
 
-    this.logMessage('getting workout for date' + workout1Date.toString());
+    this.logMessage('getting workout for date ' + workout1Date.toString());
     let workout1Check = this.exersizeService.getWorkout(workout1Date);
     this.assert(workout1Check != null, 'getting workout 1');
 
-    this.logMessage('getting workout for date' + workout2Date.toString());
+    this.logMessage('getting workout for date ' + workout2Date.toString());
     let workout2Check = this.exersizeService.getWorkout(workout2Date);
     this.assert(workout2Check != null, 'getting workout 2');
 
@@ -140,12 +184,12 @@ export class TestComponent implements OnInit {
     this.logMessage('deleting  exersize "seated row"');
     this.exersizeService.deleteExersize('seated row');
 
-    this.logMessage('deleting workout for date' + workout1Date.toString());
+    this.logMessage('deleting workout for date ' + workout1Date.toString());
     this.exersizeService.deleteWorkout(workout1Date);
     workout1Check = this.exersizeService.getWorkout(workout1Date);
     this.assert(workout1Check == null, 'deleting workout 1');
 
-    this.logMessage('deleting workout for date' + workout2Date.toString());
+    this.logMessage('deleting workout for date ' + workout2Date.toString());
     this.exersizeService.deleteWorkout(workout2Date);
     workout2Check = this.exersizeService.getWorkout(workout2Date);
     this.assert(workout2Check == null, 'deleting workout 2');
