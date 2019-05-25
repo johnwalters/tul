@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col text-center">
+        <h4>Workouts</h4>
+      </div>
+      <div class="col text-right">
+          <app-add-workout-modal (addWorkout)="addWorkout($event)">
+          </app-add-workout-modal>
+        </div>
+  </div>
+<div class="row">
+    <div class="col">
+      <table>
+        <tr *ngFor="let workout of workouts">
+          <td>
+            <span>{{workout.dateMMDDYY()}}</span>
+          </td>
+      </table>
+    </div>
+  </div>

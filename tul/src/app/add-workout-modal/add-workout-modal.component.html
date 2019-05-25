@@ -1,0 +1,20 @@
+<button type="button" class="btn btn-outline-primary btn-sm" (click)="openModal()">Add Workout</button>
+  <div class="backdrop" *ngIf="isOpen" ></div>
+  <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add Workout</h4>
+        </div>
+        <div class="modal-body">
+          <p>Add workout </p>
+          <span>For date:</span><input  type="date"  [(ngModel)]="workoutDateString"   />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" (click)="onCloseHandled()" >Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="onAddWorkout()" >Add</button>
+        </div>
+      </div>
+    </div>
+  </div>

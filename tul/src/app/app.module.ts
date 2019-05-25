@@ -6,13 +6,17 @@ import { TimerComponent } from './timer/timer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SessionComponent } from './session/session.component';
 import { TestComponent } from './test/test.component';
+import { WorkoutsComponent } from './workouts/workouts.component';
+import { AddWorkoutModalComponent } from './add-workout-modal/add-workout-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimerComponent,
     SessionComponent,
-    TestComponent
+    TestComponent,
+    WorkoutsComponent,
+    AddWorkoutModalComponent
   ],
   imports: [
     BrowserModule,

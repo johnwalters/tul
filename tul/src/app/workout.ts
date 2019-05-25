@@ -2,11 +2,14 @@ import { KeyedCollection } from './utilities/KeyedCollection';
 import { ExersizeSession } from './ExersizeSession';
 import { Exersize } from './exersize';
 import { WorkoutData } from './WorkoutData';
+import * as moment from 'moment';
 
 export class Workout {
   date: Date;
   exersizeSessions: KeyedCollection<ExersizeSession>; // known by exersize.name
   notes: string;
+
+
 
   public static fromData(workoutData: WorkoutData): Workout {
     const workout = new Workout();
@@ -44,6 +47,14 @@ export class Workout {
       workoutData.exersizeSessions.push(exersizeSessionData);
     }
     return workoutData;
+  }
+
+  dateMMDDYY(): string {
+    return moment(this.date).format('MM-DD-YY');
+  }
+
+  dateYYYYMMDD(): string {
+    return moment(this.date).format('YYYY-MM-DD');
   }
 }
 
