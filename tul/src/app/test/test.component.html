@@ -18,10 +18,35 @@
 </div>
 
 <div class="row">
-    <div class="col">
-      <button class="btn btn-primary" (click)="clearLog()">Clear Log</button>
-    </div>
+  <div class="col">
+    <button class="btn btn-warning" (click)="workoutCrud()">Workout Crud</button>
+    <span>Delete data after test:
+      <input type="checkbox" [(ngModel)]="isDeleteWorkoutsAfterCrud" (click)="changeIsDeleteWorkoutsAfterCrud()" />
+    </span>
   </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table>
+      <tr *ngFor="let workout of workouts">
+        <td>
+          <span>{{workout.date.toString()}}</span>
+          <span>
+            <table *ngIf="workout.exersizeSessions && workout.exersizeSessions.Values()">
+              <tr *ngFor="let session of workout.exersizeSessions.Values()">
+                <td>{{session.exersize.name}}</td>
+            </table>
+          </span>
+        </td>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn-primary" (click)="clearLog()">Clear Log</button>
+  </div>
+</div>
 <div class="row">
   <div class="col">
     <table>
