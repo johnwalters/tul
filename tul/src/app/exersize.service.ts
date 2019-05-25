@@ -23,10 +23,6 @@ export class ExersizeService {
     this.loadWorkouts();
   }
 
-  // public getAllExersizeSessions(forDay: Date): KeyedCollection<ExersizeSession> {
-
-  // }
-
   public addExersize(exersize: Exersize): void {
     this.exersizes.Add(exersize.name, exersize);
     this.saveExersizes();
@@ -50,6 +46,18 @@ export class ExersizeService {
     this.saveWorkouts();
   }
 
+  public createWorkoutForDate(date: Date): void {
+    let workout = new Workout();
+    // TODO: if previous (by date) workout exist, populate from that previous workout
+    const fromWorkout = this.findMostRecentWorkout();
+    if (!fromWorkout) {
+      workout = this.populateWorkoutWithExersizeSessions(workout);
+    } else {
+      workout = this.populateWorkoutWithExersizeSessionsFromAnotherWorkout(fromWorkout, workout);
+    }
+    this.addWorkout(workout);
+  }
+
   public populateWorkoutWithExersizeSessions(workout: Workout): Workout {
 
     workout.exersizeSessions = new KeyedCollection<ExersizeSession>();
@@ -59,6 +67,18 @@ export class ExersizeService {
       workout.exersizeSessions.Add(exersizeSession.exersize.name, exersizeSession);
     }
     return workout;
+  }
+
+  public populateWorkoutWithExersizeSessionsFromAnotherWorkout(fromWorkout: Workout, toWorkout: Workout): Workout {
+    toWorkout.exersizeSessions = new KeyedCollection<ExersizeSession>();
+    for (const fromExersizeSession of fromWorkout.exersizeSessions.Values()) {
+      const toExersizeSession = new ExersizeSession();
+      toExersizeSession.exersize = fromExersizeSession.exersize;
+      toExersizeSession.weight = fromExersizeSession.weight;
+      toExersizeSession.weightUnitOfMeasure = fromExersizeSession.weightUnitOfMeasure;
+      toWorkout.exersizeSessions.Add(fromExersizeSession.exersize.name, fromExersizeSession);
+    }
+    return toWorkout;
   }
 
   public deleteWorkout(date: Date): void {
@@ -73,6 +93,11 @@ export class ExersizeService {
 
   public getWorkout(date: Date): Workout {
     return this.workouts.Item(date.toString());
+  }
+
+  private findMostRecentWorkout(): Workout {
+    // TODO: implement findMostRecentWorkout
+    return null;
   }
 
   private saveExersizes() {
