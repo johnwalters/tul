@@ -26,6 +26,14 @@
   </div>
 </div>
 <div class="row">
+    <div class="col">
+      <button class="btn btn-warning" (click)="createWorkoutForDateTest()">Create Workout For Date</button>
+      <span>Delete data after test:
+        <input type="checkbox" [(ngModel)]="isDeleteWorkoutsAfterCrud" (click)="changeIsDeleteWorkoutsAfterCrud()" />
+      </span>
+    </div>
+  </div>
+<div class="row">
   <div class="col">
     <table>
       <tr *ngFor="let workout of workouts">

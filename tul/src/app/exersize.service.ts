@@ -5,6 +5,7 @@ import { LocalStorageService } from './utilities/local-storage.service';
 import { Workout } from './workout';
 import { WorkoutData } from './WorkoutData';
 import { ExersizeSession } from './ExersizeSession';
+import * as _ from 'underscore';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,7 @@ export class ExersizeService {
   public getExersize(name: string): Exersize {
     return this.exersizes.Item(name);
   }
-// -----
+
   public addWorkout(workout: Workout): void {
     this.workouts.Add(workout.date.toString(), workout);
     this.saveWorkouts();
@@ -48,6 +49,7 @@ export class ExersizeService {
 
   public createWorkoutForDate(date: Date): void {
     let workout = new Workout();
+    workout.date = date;
     // TODO: if previous (by date) workout exist, populate from that previous workout
     const fromWorkout = this.findMostRecentWorkout();
     if (!fromWorkout) {
@@ -76,7 +78,7 @@ export class ExersizeService {
       toExersizeSession.exersize = fromExersizeSession.exersize;
       toExersizeSession.weight = fromExersizeSession.weight;
       toExersizeSession.weightUnitOfMeasure = fromExersizeSession.weightUnitOfMeasure;
-      toWorkout.exersizeSessions.Add(fromExersizeSession.exersize.name, fromExersizeSession);
+      toWorkout.exersizeSessions.Add(toExersizeSession.exersize.name, toExersizeSession);
     }
     return toWorkout;
   }
@@ -96,8 +98,10 @@ export class ExersizeService {
   }
 
   private findMostRecentWorkout(): Workout {
-    // TODO: implement findMostRecentWorkout
-    return null;
+    if (this.workouts.Keys().length === 0) return null;
+    this.sortWorkouts();
+    const mostRecentWorkoutKey = this.workouts.Keys()[0];
+    return this.workouts.Item(mostRecentWorkoutKey);
   }
 
   private saveExersizes() {
@@ -114,6 +118,7 @@ export class ExersizeService {
    }
 
    private saveWorkouts() {
+     this.sortWorkouts();
      const workoutDataList = Array<WorkoutData>();
      for (const workout of this.workouts.Values()) {
       const workoutData = Workout.toData(workout);
@@ -130,6 +135,15 @@ export class ExersizeService {
       const workout = Workout.fromData(workoutData);
       this.workouts.Add(workout.date.toString(), workout);
     }
-
    }
+
+  private sortWorkouts(): void {
+    // sort by date, desc
+    const sortedWorkoutDates = _.sortBy(this.workouts.Keys(), function (dateKey: string) { return -(new Date(dateKey).getTime()); });
+    const sortedWorkouts = new KeyedCollection<Workout>();
+    for (const workoutDate of sortedWorkoutDates) {
+      sortedWorkouts.Add(workoutDate.toString(), this.workouts.Item(workoutDate));
+    }
+    this.workouts = sortedWorkouts;
+  }
 }
