@@ -8,6 +8,7 @@ import { SessionComponent } from './session/session.component';
 import { TestComponent } from './test/test.component';
 import { WorkoutsComponent } from './workouts/workouts.component';
 import { AddWorkoutModalComponent } from './add-workout-modal/add-workout-modal.component';
+import { ModalTemplateComponent } from './utilities/modal-template/modal-template.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AddWorkoutModalComponent } from './add-workout-modal/add-workout-modal.
     SessionComponent,
     TestComponent,
     WorkoutsComponent,
-    AddWorkoutModalComponent
+    AddWorkoutModalComponent,
+    ModalTemplateComponent
   ],
   imports: [
     BrowserModule,

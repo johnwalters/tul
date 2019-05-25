@@ -357,7 +357,7 @@ export class TestComponent implements OnInit {
     this.log.push(message);
   }
 
-    private clearLog(): void {
+  clearLog(): void {
       this.log = new Array<string>();
   }
 
