@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExersizeService } from '../exersize.service';
 import { Exersize } from '../exersize';
 import { Workout } from '../workout';
-import { WorkoutData } from '../WorkoutData';
+import * as moment from 'moment';
 import { WeightUnitOfMeasure } from '../WeightUnitOfMeasure';
 
 @Component({
@@ -106,7 +106,7 @@ export class TestComponent implements OnInit {
     this.exersizeService.addExersize(exersize3);
 
     // create a workout
-    const workout1Date = new Date('2017-01-26');
+    const workout1Date = moment('2017-01-26').toDate();
     this.logMessage('adding  workout for date' + workout1Date.toString());
     let workout1 = new Workout();
     workout1.date = workout1Date;
@@ -137,7 +137,7 @@ export class TestComponent implements OnInit {
     this.loadWorkouts();
 
     // create another workout
-    const workout2Date = new Date('2017-01-27');
+    const workout2Date = moment('2017-01-27').toDate();
     this.logMessage('adding  workout for date ' + workout2Date.toString());
     let workout2 = new Workout();
     workout2.date = workout2Date;
@@ -226,7 +226,7 @@ export class TestComponent implements OnInit {
     this.exersizeService.addExersize(exersize3);
 
     // create a workout
-    const workout1Date = new Date('2019-04-10');
+    const workout1Date = moment('2019-04-10').toDate();
     this.logMessage('adding  workout for date ' + workout1Date.toString());
     let workout1 = new Workout();
     workout1.date = workout1Date;
@@ -258,7 +258,7 @@ export class TestComponent implements OnInit {
     this.loadWorkouts();
 
     // create a prior workout
-    const workoutPDate = new Date('2019-03-31');
+    const workoutPDate = moment('2019-03-31').toDate();
     this.logMessage('adding workout for date ' + workoutPDate.toString());
     let workoutP = new Workout();
     workoutP.date = workoutPDate;
@@ -290,7 +290,7 @@ export class TestComponent implements OnInit {
     this.loadWorkouts();
 
     // create another workout
-    const workout2Date = new Date('2019-04-27');
+    const workout2Date = moment('2019-04-27').toDate();
     this.logMessage('creating  workout for date ' + workout2Date.toString());
     this.exersizeService.createWorkoutForDate(workout2Date);
     const workout2 = this.exersizeService.getWorkout(workout2Date);
