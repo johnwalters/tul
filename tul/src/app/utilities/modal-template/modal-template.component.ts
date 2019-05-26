@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Model Title</h4>
+      <div class="row">
+          <div class="col text-center">
+              <h4 class="modal-title">Model Title</h4>
+          </div>
         </div>
         <div class="modal-body">
           <p>Model body text</p>

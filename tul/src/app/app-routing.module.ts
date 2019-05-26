@@ -8,7 +8,7 @@ import { WorkoutsComponent } from './workouts/workouts.component';
 import { WorkoutComponent } from './workout/workout.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/timer', pathMatch: 'full' },
+  { path: '', redirectTo: '/workouts', pathMatch: 'full' },
   { path: 'timer', component: TimerComponent },
   { path: 'workouts', component: WorkoutsComponent },
   { path: 'session/:id/:eid', component: SessionComponent },
