@@ -105,6 +105,12 @@ export class TestComponent implements OnInit {
     exersize3.name = 'shoulder press';
     this.exersizeService.addExersize(exersize3);
 
+    this.logMessage('adding  exersize "pull down"');
+    this.exersizeService.addExersize(new Exersize({name: 'pull down'}));
+
+    this.logMessage('adding  exersize "leg press"');
+    this.exersizeService.addExersize(new Exersize({name: 'leg press'}));
+
     // create a workout
     const workout1Date = moment('2017-01-26').toDate();
     this.logMessage('adding  workout for date' + workout1Date.toString());
@@ -183,6 +189,12 @@ export class TestComponent implements OnInit {
 
     this.logMessage('deleting  exersize "seated row"');
     this.exersizeService.deleteExersize('seated row');
+
+    this.logMessage('deleting  exersize "leg press"');
+    this.exersizeService.deleteExersize('leg press');
+
+    this.logMessage('deleting  exersize "pull down"');
+    this.exersizeService.deleteExersize('pull down');
 
     this.logMessage('deleting workout for date ' + workout1Date.toString());
     this.exersizeService.deleteWorkout(workout1Date);
