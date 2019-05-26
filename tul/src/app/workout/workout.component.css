@@ -1,0 +1,14 @@
+td.exersize {
+  cursor: pointer;
+}
+
+span.exersize-detail label {
+  color:green;
+}
+
+td.arrow {
+  font-size: xx-large;
+}
+td.arrow i.chevron {
+  padding-top:50%;
+}

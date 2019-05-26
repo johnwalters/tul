@@ -35,6 +35,10 @@ export class WorkoutComponent implements OnInit {
 
   }
 
+  navToExersize(model: ExersizeSessionModel) {
+    this.router.navigateByUrl('/session/' + this.workout.dateYYYYMMDD() + '/' + model.exersizeSession.exersize.name);
+  }
+
 }
 
 

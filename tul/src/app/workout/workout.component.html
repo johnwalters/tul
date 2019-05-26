@@ -1,21 +1,34 @@
 <div class="row">
   <div class="col ">
     <span>
-      <a routerLink="/workouts" class="">All Workouts </a>
+
     </span>
   </div>
-  <div class="col text-center">
-    <h4>Workout - {{workout.dateMMMDD()}}</h4>
+  <div class="col-8 text-center">
+    <h4>{{workout.dateMMMDD()}}</h4>
   </div>
   <div class="col text-right">
-    <button type="button" class="btn btn-outline-primary btn-sm mt-1 mb-1">Add Exersize</button>
+
   </div>
 </div>
 <div class="row">
+    <div class="col-5 pt-1">
+      <span class="">
+        <a routerLink="/workouts" class="">All Workouts </a>
+      </span>
+    </div>
+    <div class="col text-center">
+
+    </div>
+    <div class="col-5 text-right">
+      <button type="button" class="btn btn-outline-primary btn-sm mt-1 mb-1">Add Exersize</button>
+    </div>
+  </div>
+<div class="row">
   <div class="col">
-    <table *ngIf="exersizeSessionModels">
+    <table class="table table-striped" *ngIf="exersizeSessionModels">
       <tr *ngFor="let model of exersizeSessionModels">
-        <td>
+        <td class="exersize" (click)="navToExersize(model)">
           <div class="row">
             <div class="col ">
               <span class="exersize-name">
@@ -35,10 +48,26 @@
           </div>
           <div class="row" *ngIf="model.exersizeSession.TimeUnderLoadSeconds">
             <div class="col ">
-              <span class="exersize-detail">Time Under
-                Load:&nbsp;{{model.exersizeSession.TimeUnderLoadSeconds}}</span>
+              <span class="exersize-detail">
+                <label>Time Under Load:</label>&nbsp;{{model.exersizeSession.TimeUnderLoadSeconds}}
+              </span>
             </div>
 
+          </div>
+          <div class="row" *ngIf="model.exersizeSession.repititions">
+            <div class="col ">
+              <span class="exersize-detail">
+                <label>Reps:</label>&nbsp;{{model.exersizeSession.repititions}}
+              </span>
+            </div>
+
+          </div>
+        </td>
+        <td class="arrow">
+          <div class="row">
+            <div class="col ">
+              <i class="chevron fas fa-chevron-right text-info"></i>
+            </div>
           </div>
         </td>
 
