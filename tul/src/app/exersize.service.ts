@@ -111,10 +111,21 @@ export class ExersizeService {
    private loadExersizes() {
     const exersizeList = this.localStorageService.readObject<Array<Exersize>>(this.LOCAL_STORAGE_KEY_EXERSIZES);
     this.exersizes = new KeyedCollection<Exersize>();
-    if (!exersizeList) return;
+    if (!exersizeList) {
+      this.initializeExersizeList();
+      return;
+    }
     for (const exersize of exersizeList) {
       this.exersizes.Add(exersize.name, exersize);
     }
+   }
+
+   private initializeExersizeList(): void {
+    this.addExersize(new Exersize({name: 'seated row'}));
+    this.addExersize(new Exersize({name: 'pull down'}));
+    this.addExersize(new Exersize({name: 'chest press'}));
+    this.addExersize(new Exersize({name: 'shoulder press'}));
+    this.addExersize(new Exersize({name: 'leg press'}));
    }
 
    private saveWorkouts() {
