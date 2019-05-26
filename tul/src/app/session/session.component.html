@@ -1,3 +1,23 @@
-<p>
-  session works!
-</p>
+<div class="row">
+  <div class="col ">
+    <span>
+      <a routerLink="/workout/{{workout.dateYYYYMMDD()}}" class="">Workout </a>
+    </span>
+  </div>
+  <div class="col text-center">
+    <h4>{{exersizeName}}</h4>
+  </div>
+  <div class="col text-right">
+
+  </div>
+</div>
+<div class="row">
+  <div class="col ">
+    Weight: <input  [(ngModel)]="exersizeSession.weight" (change)="save()" />
+  </div>
+</div>
+<div class="row">
+    <div class="col ">
+      TuL: <input  [(ngModel)]="exersizeSession.TimeUnderLoadSeconds" (change)="save()" />
+    </div>
+  </div>

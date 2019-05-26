@@ -9,7 +9,10 @@ export class Workout {
   exersizeSessions: KeyedCollection<ExersizeSession>; // known by exersize.name
   notes: string;
 
-
+  public static fromYYYYMMDD(dateYYYYMMDD: string): Date {
+    const date = moment(dateYYYYMMDD).toDate();
+    return date;
+  }
 
   public static fromData(workoutData: WorkoutData): Workout {
     const workout = new Workout();
@@ -55,6 +58,10 @@ export class Workout {
 
   dateYYYYMMDD(): string {
     return moment(this.date).format('YYYY-MM-DD');
+  }
+
+  dateMMMDD(): string {
+    return moment(this.date).format('MMM DD');
   }
 }
 

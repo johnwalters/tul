@@ -5,13 +5,15 @@ import { TimerComponent } from './timer/timer.component';
 import { SessionComponent } from './session/session.component';
 import { TestComponent } from './test/test.component';
 import { WorkoutsComponent } from './workouts/workouts.component';
+import { WorkoutComponent } from './workout/workout.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/timer', pathMatch: 'full' },
   { path: 'timer', component: TimerComponent },
   { path: 'workouts', component: WorkoutsComponent },
-  { path: 'session', component: SessionComponent },
+  { path: 'session/:id/:eid', component: SessionComponent },
   { path: 'test', component: TestComponent },
+  { path: 'workout/:id', component: WorkoutComponent },
 
 ];
 

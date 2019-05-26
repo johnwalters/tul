@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col ">
+        <span>
+            <a routerLink="/workouts" class="">All Workouts </a>
+          </span>
+      </div>
+  <div class="col text-center">
+    <h4>Workout - {{workout.dateMMMDD()}}</h4>
+  </div>
+  <div class="col text-right">
+      <button type="button" class="btn btn-outline-primary btn-sm mt-1 mb-1" >Add Exersize</button>
+    </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table *ngIf="workout.exersizeSessions && workout.exersizeSessions.Values()">
+      <tr *ngFor="let session of workout.exersizeSessions.Values()">
+        <td>
+          <div class="row">
+            <div class="col ">
+              <span class="exersize-name">
+              <a routerLink="/session/{{workout.dateYYYYMMDD()}}/{{session.exersize.name}}" class="">{{session.exersize.name}} </a>
+            </span>
+            </div>
+          </div>
+          <div class="row" *ngIf="session.weight || session.repititions">
+            <div class="col " *ngIf="session.weight ">
+              <span class="exersize-detail">Weight:&nbsp;{{session.weight}}&nbsp;{{session.weightUnitOfMeasure}}</span>
+            </div>
+            <div class="col " *ngIf="!session.weight && session.repititions">
+              <span class="exersize-detail">Reps:&nbsp;{{session.repititions}}</span>
+            </div>
+          </div>
+          <div class="row" *ngIf="session.TimeUnderLoadSeconds">
+              <div class="col " >
+                <span class="exersize-detail">Time Under Load:&nbsp;{{session.TimeUnderLoadSeconds}}</span>
+              </div>
+
+            </div>
+        </td>
+
+    </table>
+  </div>
+</div>

@@ -15,7 +15,9 @@
       <table>
         <tr *ngFor="let model of workoutModels">
           <td>
-            <span>{{model.workout.dateMMDDYY()}}</span>
+            <span>
+              <a routerLink="/workout/{{model.workout.dateYYYYMMDD()}}" >{{model.workout.dateMMDDYY()}} </a>
+            </span>
             <span class="delete"
             *ngIf="!model.isDeletePending"
             ><button type="button" class="btn btn-outline-danger btn-sm" (click)="promptToDelete(model)">Delete</button></span>
