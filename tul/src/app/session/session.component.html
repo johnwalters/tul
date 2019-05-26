@@ -1,10 +1,12 @@
 <div class="row">
-  <div class="col ">
-    <span>
-      <a routerLink="/workout/{{workout.dateYYYYMMDD()}}" class="">Workout </a>
-    </span>
-  </div>
-  <div class="col text-center">
+
+  <div class="col" >
+      <span class="nav">
+        <a routerLink="/workout/{{workout.dateYYYYMMDD()}}" class=""><i class="chevron fas fa-chevron-left text-info"></i></a>
+      </span>
+    </div>
+
+  <div class="col-8 text-center">
     <h4>{{exersizeName}}</h4>
   </div>
   <div class="col text-right">
@@ -12,10 +14,31 @@
   </div>
 </div>
 <div class="row">
-  <div class="col ">
-    Weight: <input  [(ngModel)]="exersizeSession.weight" (change)="save()" />
+  <div class="col-2">
+    <input class="weight" [(ngModel)]="exersizeSession.weight" (change)="save()" />
   </div>
+  <div class="col ">
+      <div class="">
+          <button type="button" class="btn btn-sm "
+          [ngClass]="{ 'btn-info': exersizeSession.weightUnitOfMeasure === 0,'btn-outline-info': exersizeSession.weightUnitOfMeasure !== 0 }"
+          (click)="setUm('pounds')">
+            pounds
+          </button>
+          <button type="button" class="btn btn-sm ml-1 mr-1"
+          [ngClass]="{ 'btn-info': exersizeSession.weightUnitOfMeasure === 1,'btn-outline-info': exersizeSession.weightUnitOfMeasure !== 1 }" (click)="setUm('kilograms')">
+              kilograms
+            </button>
+            <button type="button" class="btn btn-sm"
+            [ngClass]="{ 'btn-info': exersizeSession.weightUnitOfMeasure === 2,'btn-outline-info': exersizeSession.weightUnitOfMeasure !== 2 }" (click)="setUm('units')">
+                units
+              </button>
+
+        </div>
+
+
+    </div>
 </div>
+
 <div class="row">
     <div class="col ">
       TuL: <input  [(ngModel)]="exersizeSession.TimeUnderLoadSeconds" (change)="save()" />
@@ -24,7 +47,7 @@
   <div class="row">
       <div class="col">
 
-        <button class="btn btn-warning btn-sm" (click)="clearTimer()">Reset</button>
+        <button class="btn btn-warning btn-block" (click)="clearTimer()">Reset</button>
       </div>
     </div>
     <div class="row">

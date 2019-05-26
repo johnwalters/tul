@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Workout } from '../workout';
 import { ExersizeService } from '../exersize.service';
 import { ExersizeSession } from '../ExersizeSession';
+import { WeightUnitOfMeasure } from '../WeightUnitOfMeasure';
 
 @Component({
   selector: 'app-session',
@@ -21,6 +22,8 @@ export class SessionComponent implements OnInit {
   timerIsRunning = false;
   timerText = 'Start';
 
+  UnitOfMeasureString: string;
+
   constructor(
     private exersizeService: ExersizeService,
     private route: ActivatedRoute,
@@ -32,6 +35,11 @@ export class SessionComponent implements OnInit {
     this.workoutDate = Workout.fromYYYYMMDD(workoutDateYYYYMMDD);
     this.workout = this.exersizeService.getWorkout(this.workoutDate);
     this.exersizeSession = this.workout.exersizeSessions.Item(this.exersizeName);
+  }
+
+  setUm(val: string) {
+    this.exersizeSession.weightUnitOfMeasure = WeightUnitOfMeasure[val];
+    this.save();
   }
 
   save() {

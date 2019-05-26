@@ -16,7 +16,7 @@
         <tr *ngFor="let model of workoutModels">
           <td>
             <span>
-              <a routerLink="/workout/{{model.workout.dateYYYYMMDD()}}" >{{model.workout.dateMMDDYY()}} </a>
+              <a routerLink="/workout/{{model.workout.dateYYYYMMDD()}}" >{{model.workout.dateMMMDD()}} </a>
             </span>
             <span class="delete"
             *ngIf="!model.isDeletePending"
