@@ -14,29 +14,29 @@
 <div class="row">
   <div class="col">
     <table *ngIf="exersizeSessionModels">
-      <tr *ngFor="let session of exersizeSessionModels">
+      <tr *ngFor="let model of exersizeSessionModels">
         <td>
           <div class="row">
             <div class="col ">
               <span class="exersize-name">
-                <a routerLink="/session/{{workout.dateYYYYMMDD()}}/{{session.exersizeSession.exersize.name}}"
-                  class="">{{session.exersizeSession.exersize.name}} </a>
+                <a routerLink="/session/{{workout.dateYYYYMMDD()}}/{{model.exersizeSession.exersize.name}}"
+                  class="">{{model.exersizeSession.exersize.name}} </a>
               </span>
             </div>
           </div>
-          <div class="row" *ngIf="session.exersizeSession.weight || session.exersizeSession.repititions">
-            <div class="col " *ngIf="session.exersizeSession.weight ">
+          <div class="row" *ngIf="model.exersizeSession.weight || model.exersizeSession.repititions">
+            <div class="col " *ngIf="model.exersizeSession.weight ">
               <span
-                class="exersize-detail">Weight:&nbsp;{{session.exersizeSession.weight}}&nbsp;{{session.sessionUm}}</span>
+                class="exersize-detail">Weight:&nbsp;{{model.exersizeSession.weight}}&nbsp;{{model.sessionUm}}</span>
             </div>
-            <div class="col " *ngIf="!session.exersizeSession.weight && session.exersizeSession.repititions">
-              <span class="exersize-detail">Reps:&nbsp;{{session.exersizeSession.repititions}}</span>
+            <div class="col " *ngIf="!model.exersizeSession.weight && model.exersizeSession.repititions">
+              <span class="exersize-detail">Reps:&nbsp;{{model.exersizeSession.repititions}}</span>
             </div>
           </div>
-          <div class="row" *ngIf="session.exersizeSession.TimeUnderLoadSeconds">
+          <div class="row" *ngIf="model.exersizeSession.TimeUnderLoadSeconds">
             <div class="col ">
               <span class="exersize-detail">Time Under
-                Load:&nbsp;{{session.exersizeSession.TimeUnderLoadSeconds}}</span>
+                Load:&nbsp;{{model.exersizeSession.TimeUnderLoadSeconds}}</span>
             </div>
 
           </div>
