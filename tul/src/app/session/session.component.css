@@ -1,0 +1,25 @@
+p {
+  color:blue;
+}
+.timer-btn {
+  height:25em;
+  border: 2px solid;
+  border-radius: 10px;
+}
+.timer-btn-success {
+  background-color: green;
+}
+
+.timer-btn-danger {
+  background-color: red;
+}
+
+.timer-btn-text {
+  color:white;
+  font-size: 5em;
+  padding-top: 50%;
+}
+
+.seconds-text {
+  font-size: x-large;
+}

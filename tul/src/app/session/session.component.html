@@ -21,3 +21,41 @@
       TuL: <input  [(ngModel)]="exersizeSession.TimeUnderLoadSeconds" (change)="save()" />
     </div>
   </div>
+  <div class="row">
+      <div class="col">
+
+        <button class="btn btn-warning btn-sm" (click)="clearTimer()">Reset</button>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col text-center seconds-text">
+            Seconds:
+            <label>{{(timerCounter / 1000) | number:'0.0-0' }}</label>
+          </div>
+      </div>
+
+
+
+    <div class="row ">
+        <div class="col">
+          <div
+          class="timer-btn text-center"
+
+          [ngClass]="{ 'timer-btn-danger': timerIsRunning, 'timer-btn-success': !timerIsRunning}"
+          (click)="startTimer()"
+          >
+          <div
+          class="timer-btn-text"
+
+
+
+          >{{timerText}}</div>
+        </div>
+
+        </div>
+    </div>
+
+
+
+
+
