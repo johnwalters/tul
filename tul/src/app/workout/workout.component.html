@@ -1,42 +1,45 @@
 <div class="row">
-    <div class="col ">
-        <span>
-            <a routerLink="/workouts" class="">All Workouts </a>
-          </span>
-      </div>
+  <div class="col ">
+    <span>
+      <a routerLink="/workouts" class="">All Workouts </a>
+    </span>
+  </div>
   <div class="col text-center">
     <h4>Workout - {{workout.dateMMMDD()}}</h4>
   </div>
   <div class="col text-right">
-      <button type="button" class="btn btn-outline-primary btn-sm mt-1 mb-1" >Add Exersize</button>
-    </div>
+    <button type="button" class="btn btn-outline-primary btn-sm mt-1 mb-1">Add Exersize</button>
+  </div>
 </div>
 <div class="row">
   <div class="col">
-    <table *ngIf="workout.exersizeSessions && workout.exersizeSessions.Values()">
-      <tr *ngFor="let session of workout.exersizeSessions.Values()">
+    <table *ngIf="exersizeSessionModels">
+      <tr *ngFor="let session of exersizeSessionModels">
         <td>
           <div class="row">
             <div class="col ">
               <span class="exersize-name">
-              <a routerLink="/session/{{workout.dateYYYYMMDD()}}/{{session.exersize.name}}" class="">{{session.exersize.name}} </a>
-            </span>
+                <a routerLink="/session/{{workout.dateYYYYMMDD()}}/{{session.exersizeSession.exersize.name}}"
+                  class="">{{session.exersizeSession.exersize.name}} </a>
+              </span>
             </div>
           </div>
-          <div class="row" *ngIf="session.weight || session.repititions">
-            <div class="col " *ngIf="session.weight ">
-              <span class="exersize-detail">Weight:&nbsp;{{session.weight}}&nbsp;{{session.weightUnitOfMeasure}}</span>
+          <div class="row" *ngIf="session.exersizeSession.weight || session.exersizeSession.repititions">
+            <div class="col " *ngIf="session.exersizeSession.weight ">
+              <span
+                class="exersize-detail">Weight:&nbsp;{{session.exersizeSession.weight}}&nbsp;{{session.sessionUm}}</span>
             </div>
-            <div class="col " *ngIf="!session.weight && session.repititions">
-              <span class="exersize-detail">Reps:&nbsp;{{session.repititions}}</span>
+            <div class="col " *ngIf="!session.exersizeSession.weight && session.exersizeSession.repititions">
+              <span class="exersize-detail">Reps:&nbsp;{{session.exersizeSession.repititions}}</span>
             </div>
           </div>
-          <div class="row" *ngIf="session.TimeUnderLoadSeconds">
-              <div class="col " >
-                <span class="exersize-detail">Time Under Load:&nbsp;{{session.TimeUnderLoadSeconds}}</span>
-              </div>
+          <div class="row" *ngIf="session.exersizeSession.TimeUnderLoadSeconds">
+            <div class="col ">
+              <span class="exersize-detail">Time Under
+                Load:&nbsp;{{session.exersizeSession.TimeUnderLoadSeconds}}</span>
+            </div>
 
-            </div>
+          </div>
         </td>
 
     </table>
