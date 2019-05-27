@@ -10,3 +10,14 @@ span.confirm-delete {
 .workout-date {
   font-size: x-large;
 }
+
+td.workout-date {
+  width:20em;
+}
+
+td.arrow {
+  font-size: xx-large;
+}
+td.arrow i.chevron {
+  padding-top:50%;
+}

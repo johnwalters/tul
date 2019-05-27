@@ -16,7 +16,7 @@
 </div>
 <div class="row">
   <div class="col-2">
-    <input class="weight" [(ngModel)]="exersizeSession.weight" (change)="save()" />
+    <input class="weight" type="number" pattern="[0-9]*" [(ngModel)]="exersizeSession.weight" (change)="save()" />
   </div>
   <div class="col ">
     <div class="">
@@ -44,13 +44,13 @@
 
 <div class="row mt-1">
   <div class="col">
-    TuL: <input class="tul" [(ngModel)]="exersizeSession.TimeUnderLoadSeconds" (change)="save()" />
+    TuL: <input class="tul" type="number" pattern="[0-9]*" [(ngModel)]="exersizeSession.TimeUnderLoadSeconds" (change)="save()" />
   </div>
   <div class="col-2 ">
 
   </div>
   <div class="col ">
-    Reps: <input class="reps" [(ngModel)]="exersizeSession.repititions" (change)="save()" />
+    Reps: <input class="reps" type="number" pattern="[0-9]*" [(ngModel)]="exersizeSession.repititions" (change)="save()" />
   </div>
 </div>
 <div class="row">

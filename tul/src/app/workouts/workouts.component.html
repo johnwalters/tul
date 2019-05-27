@@ -14,19 +14,19 @@
     <div class="col">
       <table class=" ">
         <tr *ngFor="let model of workoutModels">
-          <td>
+          <td class="workout-date">
             <span class="workout-date">
               <a routerLink="/workout/{{model.workout.dateYYYYMMDD()}}" >{{model.workout.dateMMMDD()}} </a>
             </span>
-            <span class="delete"
-            *ngIf="!model.isDeletePending"
-            ><button type="button" class="btn btn-outline-danger btn-sm" (click)="promptToDelete(model)">Delete</button></span>
-            <span class="confirm-delete"
-            *ngIf="model.isDeletePending">
-                <button type="button" class="btn btn-outline-primary btn-sm" (click)="promptToDelete(model)">Cancel</button>
-              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(model)">Delete?</button>
-            </span>
+
           </td>
+          <td class="arrow">
+              <div class="row">
+                <div class="col ">
+                  <i class="chevron fas fa-chevron-right text-info"></i>
+                </div>
+              </div>
+            </td>
       </table>
     </div>
   </div>

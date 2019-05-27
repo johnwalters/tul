@@ -41,5 +41,6 @@ input.reps {
 }
 
 textarea.notes {
-  width:100%
+  width:100%;
+  font-size: x-large;
 }

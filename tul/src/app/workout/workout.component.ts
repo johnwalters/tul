@@ -58,6 +58,11 @@ export class WorkoutComponent implements OnInit {
     this.router.navigateByUrl('/session/' + this.workout.dateYYYYMMDD() + '/' + exersizeToAdd.name);
   }
 
+  delete(): void {
+    this.exersizeService.deleteWorkout(this.workoutDate);
+    this.router.navigateByUrl('/workouts');
+  }
+
 }
 
 
