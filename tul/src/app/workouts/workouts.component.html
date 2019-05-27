@@ -18,14 +18,14 @@
 <div class="row">
   <div class="col">
     <table class=" ">
-      <tr *ngFor="let model of workoutModels">
-        <td class="workout-date">
+      <tr *ngFor="let model of workoutModels" >
+        <td class="workout-date" (click)="navToWorkout(model.workout.date)">
           <span class="workout-date">
             <a routerLink="/workout/{{model.workout.dateYYYYMMDD()}}">{{model.workout.dateMMMDD()}} </a>
           </span>
 
         </td>
-        <td class="arrow">
+        <td class="arrow" (click)="navToWorkout(model.workout.date)">
           <div class="row">
             <div class="col ">
               <i class="chevron fas fa-chevron-right text-info"></i>
