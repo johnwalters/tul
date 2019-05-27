@@ -32,12 +32,18 @@ span.nav i {
   font-size: xx-large;
 }
 
+input.weight {
+  font-size:x-large;
+}
+
 input.tul {
   width: 3em;
+  font-size:x-large;
 }
 
 input.reps {
   width: 3em;
+  font-size:x-large;
 }
 
 textarea.notes {
