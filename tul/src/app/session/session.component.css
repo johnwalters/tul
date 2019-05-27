@@ -39,3 +39,7 @@ input.tul {
 input.reps {
   width: 3em;
 }
+
+textarea.notes {
+  width:100%
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Workout } from '../workout';
 import { ExersizeService } from '../exersize.service';
 import { ExersizeSession } from '../ExersizeSession';
@@ -27,14 +27,17 @@ export class SessionComponent implements OnInit {
   constructor(
     private exersizeService: ExersizeService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     const workoutDateYYYYMMDD = this.route.snapshot.paramMap.get('id');
     this.exersizeName = this.route.snapshot.paramMap.get('eid');
     this.workoutDate = Workout.fromYYYYMMDD(workoutDateYYYYMMDD);
     this.workout = this.exersizeService.getWorkout(this.workoutDate);
     this.exersizeSession = this.workout.exersizeSessions.Item(this.exersizeName);
+
   }
 
   setUm(val: string) {
@@ -69,6 +72,13 @@ export class SessionComponent implements OnInit {
     this.exersizeSession.TimeUnderLoadSeconds = 0;
     this.save();
     clearInterval(this.timerRef);
+  }
+
+  delete() {
+    this.workout.exersizeSessions.Remove(this.exersizeName);
+    this.save();
+    this.router.navigateByUrl('/workout/' + this.workout.dateYYYYMMDD());
+
   }
 
   ngOnDestroy() {

@@ -48,7 +48,7 @@
   </div>
   <div class="col-2 ">
 
-    </div>
+  </div>
   <div class="col ">
     Reps: <input class="reps" [(ngModel)]="exersizeSession.repititions" (change)="save()" />
   </div>
@@ -75,5 +75,20 @@
       <div class="timer-btn-text">{{timerText}}</div>
     </div>
 
+  </div>
+</div>
+<div class="row ">
+  <div class="col">
+    <label>
+      Notes:
+    </label>
+    <textarea class="notes" [(ngModel)]="exersizeSession.notes" (change)="save()">
+
+      </textarea>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-danger btn-block" (click)="delete()">Delete</button>
   </div>
 </div>

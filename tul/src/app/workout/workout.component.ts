@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Workout } from '../workout';
 import { WeightUnitOfMeasure } from '../WeightUnitOfMeasure';
 import { ExersizeSessionModel } from './ExersizeSessionModel';
+import { ExersizeSession } from '../ExersizeSession';
 
 @Component({
   selector: 'app-workout',
@@ -25,6 +26,11 @@ export class WorkoutComponent implements OnInit {
   ngOnInit() {
     const workoutDateYYYYMMDD = this.route.snapshot.paramMap.get('id');
     this.workoutDate = Workout.fromYYYYMMDD(workoutDateYYYYMMDD);
+    this.refresh();
+
+  }
+
+  refresh(): void {
     this.workout = this.exersizeService.getWorkout(this.workoutDate);
     this.exersizeSessionModels = new Array<ExersizeSessionModel>();
     for (const exersizeSession of this.workout.exersizeSessions.Values()) {
@@ -32,7 +38,6 @@ export class WorkoutComponent implements OnInit {
       model.sessionUm = WeightUnitOfMeasure[exersizeSession.weightUnitOfMeasure];
       this.exersizeSessionModels.push(model);
     }
-
   }
 
   navToExersize(model: ExersizeSessionModel) {
@@ -41,6 +46,16 @@ export class WorkoutComponent implements OnInit {
 
   navToAllWorkouts() {
     this.router.navigateByUrl('/workouts');
+  }
+
+  addExersize(message: any) {
+    const exersizeToAdd = message.exersize;
+    this.exersizeService.addExersize(exersizeToAdd);
+    const exersizeSession = new ExersizeSession();
+    exersizeSession.exersize = message.exersize;
+    this.workout.exersizeSessions.Add(exersizeSession.exersize.name , exersizeSession);
+    this.exersizeService.addWorkout(this.workout);
+    this.router.navigateByUrl('/session/' + this.workout.dateYYYYMMDD() + '/' + exersizeToAdd.name);
   }
 
 }

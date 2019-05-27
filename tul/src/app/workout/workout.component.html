@@ -21,7 +21,10 @@
 
     </div>
     <div class="col-5 text-right">
-      <button type="button" class="btn btn-outline-primary btn-sm mt-1 mb-1">Add Exersize</button>
+      <app-add-exersize
+        [workout]="workout"
+        (addExersize)="addExersize($event)">
+      </app-add-exersize>
     </div>
   </div>
 <div class="row">
