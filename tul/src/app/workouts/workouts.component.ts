@@ -3,6 +3,7 @@ import { Exersize } from '../exersize';
 import { ExersizeService } from '../exersize.service';
 import { WorkoutModel } from './WorkoutModel';
 import { Router } from '@angular/router';
+import { Workout } from '../workout';
 
 @Component({
   selector: 'app-workouts',
@@ -26,7 +27,7 @@ export class WorkoutsComponent implements OnInit {
 
   addWorkout(message: any) {
     this.exersizeService.createWorkoutForDate(message.workoutDate);
-    this.loadWorkouts();
+    this.navToWorkout(message.workoutDate);
   }
 
   promptToDelete(model: WorkoutModel): void {
@@ -40,6 +41,10 @@ export class WorkoutsComponent implements OnInit {
 
   navToSettings(): void {
     this.router.navigateByUrl('/settings');
+  }
+
+  navToWorkout(workoutDate: Date): void {
+    this.router.navigateByUrl('/workout/' + Workout.toDateYYYYMMDD(workoutDate));
   }
 
 

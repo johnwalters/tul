@@ -14,6 +14,10 @@ export class Workout {
     return date;
   }
 
+  public static toDateYYYYMMDD(date: Date): string {
+    return moment(date).format('YYYY-MM-DD');
+  }
+
   public static fromData(workoutData: WorkoutData): Workout {
     const workout = new Workout();
     workout.date = new Date(workoutData.dateString);
