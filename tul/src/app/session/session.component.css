@@ -31,3 +31,11 @@ input.weight {
 span.nav i {
   font-size: xx-large;
 }
+
+input.tul {
+  width: 3em;
+}
+
+input.reps {
+  width: 3em;
+}

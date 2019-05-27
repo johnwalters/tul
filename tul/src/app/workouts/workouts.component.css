@@ -5,3 +5,8 @@ span.delete {
 span.confirm-delete {
   padding-left: 5em;
 }
+
+
+.workout-date {
+  font-size: x-large;
+}
