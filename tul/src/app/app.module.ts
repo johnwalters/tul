@@ -11,6 +11,7 @@ import { AddWorkoutModalComponent } from './add-workout-modal/add-workout-modal.
 import { ModalTemplateComponent } from './utilities/modal-template/modal-template.component';
 import { WorkoutComponent } from './workout/workout.component';
 import { AddExersizeComponent } from './add-exersize/add-exersize.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddExersizeComponent } from './add-exersize/add-exersize.component';
     AddWorkoutModalComponent,
     ModalTemplateComponent,
     WorkoutComponent,
-    AddExersizeComponent
+    AddExersizeComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -120,7 +120,8 @@ export class ExersizeService {
     }
    }
 
-   private initializeExersizeList(): void {
+   public initializeExersizeList(): void {
+    this.exersizes = new KeyedCollection<Exersize>();
     this.addExersize(new Exersize({name: 'seated row'}));
     this.addExersize(new Exersize({name: 'pull down'}));
     this.addExersize(new Exersize({name: 'chest press'}));

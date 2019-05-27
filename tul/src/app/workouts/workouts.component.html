@@ -1,32 +1,37 @@
 <div class="row">
-    <div class="col">
-
-    </div>
-    <div class="col text-center">
-        <h4>Workouts</h4>
-      </div>
-      <div class="col text-right">
-          <app-add-workout-modal (addWorkout)="addWorkout($event)">
-          </app-add-workout-modal>
-        </div>
+  <div class="col pt-1" (click)="navToSettings()">
+    <span class="nav">
+      <a routerLink="/settings" class="">
+        <i class="chevron fas fa-cog text-info"></i>
+      </a>
+    </span>
   </div>
+
+  <div class="col text-center">
+    <h4>Workouts</h4>
+  </div>
+  <div class="col text-right">
+    <app-add-workout-modal (addWorkout)="addWorkout($event)">
+    </app-add-workout-modal>
+  </div>
+</div>
 <div class="row">
-    <div class="col">
-      <table class=" ">
-        <tr *ngFor="let model of workoutModels">
-          <td class="workout-date">
-            <span class="workout-date">
-              <a routerLink="/workout/{{model.workout.dateYYYYMMDD()}}" >{{model.workout.dateMMMDD()}} </a>
-            </span>
+  <div class="col">
+    <table class=" ">
+      <tr *ngFor="let model of workoutModels">
+        <td class="workout-date">
+          <span class="workout-date">
+            <a routerLink="/workout/{{model.workout.dateYYYYMMDD()}}">{{model.workout.dateMMMDD()}} </a>
+          </span>
 
-          </td>
-          <td class="arrow">
-              <div class="row">
-                <div class="col ">
-                  <i class="chevron fas fa-chevron-right text-info"></i>
-                </div>
-              </div>
-            </td>
-      </table>
-    </div>
+        </td>
+        <td class="arrow">
+          <div class="row">
+            <div class="col ">
+              <i class="chevron fas fa-chevron-right text-info"></i>
+            </div>
+          </div>
+        </td>
+    </table>
   </div>
+</div>

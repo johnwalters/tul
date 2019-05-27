@@ -6,6 +6,7 @@ import { SessionComponent } from './session/session.component';
 import { TestComponent } from './test/test.component';
 import { WorkoutsComponent } from './workouts/workouts.component';
 import { WorkoutComponent } from './workout/workout.component';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/workouts', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'workouts', component: WorkoutsComponent },
   { path: 'session/:id/:eid', component: SessionComponent },
   { path: 'test', component: TestComponent },
+  { path: 'settings', component: SettingsComponent },
   { path: 'workout/:id', component: WorkoutComponent },
 
 ];

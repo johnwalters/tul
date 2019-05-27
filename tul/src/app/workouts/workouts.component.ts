@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Exersize } from '../exersize';
 import { ExersizeService } from '../exersize.service';
 import { WorkoutModel } from './WorkoutModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workouts',
@@ -15,6 +16,7 @@ export class WorkoutsComponent implements OnInit {
 
   constructor(
     private exersizeService: ExersizeService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,11 @@ export class WorkoutsComponent implements OnInit {
     this.exersizeService.deleteWorkout(model.workout.date);
     this.loadWorkouts();
   }
+
+  navToSettings(): void {
+    this.router.navigateByUrl('/settings');
+  }
+
 
   private loadExersizes(): void {
     this.exersizes =  this.exersizeService.getAllExersizes().Values();
