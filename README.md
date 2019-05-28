@@ -1,7 +1,13 @@
 # tul
 Exersize Time Under Load timer
 
-This is a web app designed for mobile that allows you to track exersize 'time under load'
+![](tul/images/exersizes.png?raw=true) ![](tul/images/exersize.png?raw=true)
+
+## Currently hosted at
+
+https://laptul.azurewebsites.net
+
+This is an angular web app designed for mobile that allows you to track exersize 'time under load'
 
 I created it for use with the exersize program described in the book Body by Science: A Research Based Program to Get the Results You Want in 12 Minutes a Week, by John R. Little and Doug McGuff.
 
