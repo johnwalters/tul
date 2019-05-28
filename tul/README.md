@@ -11,8 +11,13 @@ The essence of the program: 5 weight lifting exersizes, performed with a weight 
 
 This app helps you track weight and time under load per exersize/workout.
 
-book: https://www.amazon.com/Body-Science-Research-Program-Results-ebook/dp/B001NLL38S
-videos: https://www.youtube.com/results?search_query=body+by+science
+## Book
+ https://www.amazon.com/Body-Science-Research-Program-Results-ebook/dp/B001NLL38S
+
+## Videos
+ https://www.youtube.com/results?search_query=body+by+science
+
+Something similar is apparently called HIT Workouts. Perhaps this app would be useful for that too.
 
 Issues: 
 
