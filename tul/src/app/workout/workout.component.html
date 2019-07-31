@@ -12,21 +12,19 @@
   </div>
 </div>
 <div class="row">
-    <div class="col-5 pt-1" (click)="navToAllWorkouts()">
-      <span class="nav">
-        <a routerLink="/workouts" class=""><i class="chevron fas fa-chevron-left text-info"></i></a>
-      </span>
-    </div>
-    <div class="col text-center">
-
-    </div>
-    <div class="col-5 text-right">
-      <app-add-exersize
-        [workout]="workout"
-        (addExersize)="addExersize($event)">
-      </app-add-exersize>
-    </div>
+  <div class="col-5 pt-1" (click)="navToAllWorkouts()">
+    <span class="nav">
+      <a routerLink="/workouts" class=""><i class="chevron fas fa-chevron-left text-info"></i></a>
+    </span>
   </div>
+  <div class="col text-center">
+
+  </div>
+  <div class="col-5 text-right">
+    <app-add-exersize [workout]="workout" (addExersize)="addExersize($event)">
+    </app-add-exersize>
+  </div>
+</div>
 <div class="row">
   <div class="col">
     <table class="table table-striped" *ngIf="exersizeSessionModels">
@@ -65,22 +63,7 @@
             </div>
 
           </div>
-          <div class="row" *ngIf="model.exersizeSession.startTime">
-            <div class="col ">
-              <span class="exersize-detail">
-                <label>Start Time:</label>&nbsp;{{model.exersizeSession.startTime}}
-              </span>
-            </div>
 
-          </div>
-          <div class="row" *ngIf="model.exersizeSession.stopTime">
-            <div class="col ">
-              <span class="exersize-detail">
-                <label>Stop Time:</label>&nbsp;{{model.exersizeSession.stopTime}}
-              </span>
-            </div>
-
-          </div>
         </td>
         <td class="arrow" (click)="navToExersize(model)">
           <div class="row">
@@ -89,36 +72,19 @@
             </div>
           </div>
         </td>
-</tr>
+      </tr>
     </table>
   </div>
 </div>
+<div class="row">
+  <div class="col text-center">
+    <label>Total Rest Time: </label>
+    {{totalRestTimeSeconds}} seconds
+  </div>
+</div>
+
 <div class="row">
   <div class="col">
     <button class="btn btn-danger btn-block" (click)="delete()">Delete</button>
   </div>
 </div>
-<div class="row">
-  <div class="col">
-    <label>Earliest Start Time: </label>
-    {{earliestStartTime.toDate()}}
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <label>Latest Stop Time: </label>
-    {{latestStopTime}}
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    <label>Total Workout Seconds: </label>
-    {{totalWorkoutSeconds}}
-  </div>
-</div>
-<div class="row">
-    <div class="col">
-      <label>Total Rest Time: </label>
-      {{totalRestTimeSeconds}} seconds
-    </div>
-  </div>
