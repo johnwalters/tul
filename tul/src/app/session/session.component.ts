@@ -4,6 +4,7 @@ import { Workout } from '../workout';
 import { ExersizeService } from '../exersize.service';
 import { ExersizeSession } from '../ExersizeSession';
 import { WeightUnitOfMeasure } from '../WeightUnitOfMeasure';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-session',
@@ -53,13 +54,15 @@ export class SessionComponent implements OnInit {
     this.timerIsRunning = !this.timerIsRunning;
     if (this.timerIsRunning) {
       this.timerText = 'Stop';
-      const startTime = Date.now() - (this.timerCounter || 0);
+      const thisMoment = moment();
+      this.exersizeSession.startTime = thisMoment.add(- (this.timerCounter || 0)).toDate();
       this.timerRef = setInterval(() => {
-        this.timerCounter = Date.now() - startTime;
+        this.timerCounter = moment().diff(this.exersizeSession.startTime);
       });
     } else {
       this.timerText = 'Resume';
       this.exersizeSession.TimeUnderLoadSeconds = parseInt((this.timerCounter / 1000).toString(), 10) + 1;
+      this.exersizeSession.stopTime = moment().toDate();
       this.save();
       clearInterval(this.timerRef);
     }
@@ -70,6 +73,8 @@ export class SessionComponent implements OnInit {
     this.timerText = 'Start';
     this.timerCounter = undefined;
     this.exersizeSession.TimeUnderLoadSeconds = 0;
+    this.exersizeSession.startTime = null;
+    this.exersizeSession.stopTime = null;
     this.save();
     clearInterval(this.timerRef);
   }

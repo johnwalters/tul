@@ -8,6 +8,8 @@ export class ExersizeSession {
   public TimeUnderLoadSeconds: number;
   public repititions: number;
   public notes: string;
+  public startTime: Date;
+  public stopTime: Date;
 
   public toString(): string {
     let val = this.exersize.name;
@@ -19,6 +21,8 @@ export class ExersizeSession {
     if (this.notes) {
       val = val + ' n: ' + this.notes;
     }
+    val = val + ' start: ' + this.startTime;
+    val = val + ' stop: ' + this.stopTime;
     return val;
   }
 }

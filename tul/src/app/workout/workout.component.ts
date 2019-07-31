@@ -5,6 +5,7 @@ import { Workout } from '../workout';
 import { WeightUnitOfMeasure } from '../WeightUnitOfMeasure';
 import { ExersizeSessionModel } from './ExersizeSessionModel';
 import { ExersizeSession } from '../ExersizeSession';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-workout',
@@ -16,6 +17,10 @@ export class WorkoutComponent implements OnInit {
   workoutDate: Date;
   workout: Workout;
   exersizeSessionModels: Array<ExersizeSessionModel>;
+  totalRestTimeSeconds: number;
+  earliestStartTime: moment.Moment;
+  latestStopTime: moment.Moment;
+  totalWorkoutSeconds: number;
 
   constructor(
     private exersizeService: ExersizeService,
@@ -33,10 +38,31 @@ export class WorkoutComponent implements OnInit {
   refresh(): void {
     this.workout = this.exersizeService.getWorkout(this.workoutDate);
     this.exersizeSessionModels = new Array<ExersizeSessionModel>();
+    let isAllSessionsHaveStartAndEndDates = true;
+    let stringStartTimes = new Array<string>();
+    let stringStopTimes = new Array<string>();
+    let totalTimeUnderLoadSeconds = 0;
     for (const exersizeSession of this.workout.exersizeSessions.Values()) {
       const model = new ExersizeSessionModel(exersizeSession);
       model.sessionUm = WeightUnitOfMeasure[exersizeSession.weightUnitOfMeasure];
+      if (!exersizeSession.startTime || !exersizeSession.stopTime) {
+        isAllSessionsHaveStartAndEndDates = false;
+      } else {
+        stringStartTimes.push(moment( exersizeSession.startTime).toLocaleString());
+        stringStopTimes.push(moment( exersizeSession.stopTime).toLocaleString());
+        totalTimeUnderLoadSeconds += exersizeSession.TimeUnderLoadSeconds;
+      }
       this.exersizeSessionModels.push(model);
+    }
+    if (isAllSessionsHaveStartAndEndDates) {
+      // calculate total rest time (as latestEndTime - earliestStartTime - total time under load)
+      stringStartTimes = stringStartTimes.sort();
+      stringStopTimes = stringStopTimes.sort();
+      this.earliestStartTime = moment(stringStartTimes[0]);
+      this.latestStopTime = moment(stringStopTimes[stringStopTimes.length - 1]);
+      this.totalWorkoutSeconds = this.latestStopTime.diff(this.earliestStartTime, 'seconds');
+      this.totalRestTimeSeconds = this.totalWorkoutSeconds - totalTimeUnderLoadSeconds;
+
     }
   }
 

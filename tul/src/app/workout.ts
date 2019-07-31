@@ -32,6 +32,8 @@ export class Workout {
       exersizeSession.repititions = exersizeSessionData.repititions;
       exersizeSession.weight = exersizeSessionData.weight;
       exersizeSession.weightUnitOfMeasure = exersizeSessionData.weightUnitOfMeasure;
+      exersizeSession.startTime = moment(exersizeSessionData.startTime).toDate();
+      exersizeSession.stopTime = moment(exersizeSessionData.stopTime).toDate();
       workout.exersizeSessions.Add(exersizeSession.exersize.name, exersizeSession);
     }
     return workout;
@@ -51,6 +53,8 @@ export class Workout {
       exersizeSessionData.repititions = exersizeSession.repititions;
       exersizeSessionData.weight = exersizeSession.weight;
       exersizeSessionData.weightUnitOfMeasure = exersizeSession.weightUnitOfMeasure;
+      exersizeSessionData.startTime = exersizeSession.startTime;
+      exersizeSessionData.stopTime = exersizeSession.stopTime;
       workoutData.exersizeSessions.push(exersizeSessionData);
     }
     return workoutData;
