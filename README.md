@@ -26,7 +26,7 @@ Something similar is apparently called HIT Workouts. Perhaps this app would be u
 Issues: 
 
 1) The view is styled for an iPhone 5/SE, because that's what I have. Might need other styling for other viewports.
-2) The program calls for tracking time between exersizes. This app does not support that. I find that I don't have much control of that; if somebody is using a machine, I wait.
+
 
 
 

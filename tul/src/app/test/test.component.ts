@@ -12,6 +12,7 @@ import { WeightUnitOfMeasure } from '../WeightUnitOfMeasure';
 })
 export class TestComponent implements OnInit {
 
+  // TODO: more tests
   status = 'ready to test';
   exersizes = Array<Exersize>();
   workouts = Array<Workout>();
