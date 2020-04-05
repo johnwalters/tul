@@ -1,10 +1,5 @@
 {
     "appService.deploySubpath": "dist/tul",
-    "workbench.colorCustomizations": {
-        "titleBar.activeBackground": "#557c9b",
-        "titleBar.inactiveBackground": "#557c9b99",
-        "titleBar.activeForeground": "#e7e7e7",
-        "titleBar.inactiveForeground": "#e7e7e799"
-    },
-    "appService.defaultWebAppToDeploy": "/subscriptions/b67818b8-424e-4c8a-be7d-efaf91920ce0/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/laptul"
+    "workbench.colorCustomizations": {},
+    "appService.defaultWebAppToDeploy": "/subscriptions/b67818b8-424e-4c8a-be7d-efaf91920ce0/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/laptuldev"
 }
